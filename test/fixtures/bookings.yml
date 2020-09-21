@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  begins_at: 2020-09-21 10:45:22
+  ends_at: 2020-09-21 10:45:22
+  address: MyString
+  city: MyString
+  zip: MyString
+  price: 1
+  adress_directions: MyString
+  city: MyString
+
+two:
+  begins_at: 2020-09-21 10:45:22
+  ends_at: 2020-09-21 10:45:22
+  address: MyString
+  city: MyString
+  zip: MyString
+  price: 1
+  adress_directions: MyString
+  city: MyString
