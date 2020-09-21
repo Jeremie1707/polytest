@@ -1,0 +1,23 @@
+<div class="container">
+  <% @bookings.each do |booking| %>
+  <h1><%= "booking details id #{booking.id}"%></h1>
+    <ul>
+      <li>start: <%= booking.begins_at %></li>
+      <li>end: <%= booking.ends_at %></li>
+      <li>zip: <%= booking.zip %></li>
+      <li>city:<%= booking.city %></li>
+      <li>directions: <%= booking.adress_directions %></li>
+    </ul>
+    
+    <% booking.patients.each do |patient| %>
+    <h6><strong><%= "Patient details id #{patient.id}"%></strong></h6>
+    <ul>
+      <li><%= patient.name %></li>
+      <li><%= patient.address %></li>
+      <li><%= patient.zip %></li>
+      <li><%= patient.city %></li>
+    </ul>
+    <% end %>
+    <hr/>
+  <% end %>
+</div>

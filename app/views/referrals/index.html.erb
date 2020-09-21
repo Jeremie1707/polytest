@@ -1,0 +1,37 @@
+<div class="container">
+  <% @referrals.each do |referral| %>
+  <% patient_list = [] %>
+  <h1><%= "Referral details id #{referral.id}"%></h1>
+    <ul>
+      <li>organization: <%= referral.organization %></li>
+      <li>address: <%= referral.address %></li>
+      <li>zip: <%= referral.zip %></li>
+      <li>city:<%= referral.city %></li>
+      <li>directions: <%= referral.adress_directions %></li>
+      <li>contact : <%= referral.contact_name %></li>
+    </ul>
+    
+    <% referral.patients.each do |patient| %>
+    <h6><%= "Patient details id #{patient.id}"%></h6>
+    <ul>
+      <li><%= patient.name %></li>
+      <li><%= patient.address %></li>
+      <li><%= patient.zip %></li>
+      <li><%= patient.city %></li>
+    </ul>
+    <% patient_list << patient %>
+    <% end %>
+  
+    <%= button_to "convert to booking", referral_conversion_path, params: {
+      booking: {
+        address: referral.address,
+        zip: referral.zip,
+        city: referral.city,
+        adress_directions: referral.adress_directions,
+        patient_ids: patient_list
+        }  
+      }
+      %>  
+  <hr/>
+  <% end %>
+</div>

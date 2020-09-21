@@ -1,0 +1,28 @@
+<div class="container">
+  <h1> This is a great form</h1>
+  <%= simple_form_for @booking do |f| %>
+    <div class="mb-3">
+      <p style="color:blue"><strong>Referrals detail</strong></p>
+      <%= f.input :begins_at %>
+      <%= f.input :ends_at %>
+      <%= f.input :address %>
+      <%= f.input :zip %>
+      <%= f.input :city %>
+      <%= f.text_area :adress_directions, placeholder: "address direcitons" %>
+      <%= f.input :price %>
+    </div>
+    <% @booking.patients.each do |patient| %>
+      <div class="mb-3">
+        <%= f.fields_for 'patients_attributes[]', patient do |ff| %>
+          <p style="color:blue"><strong>Patients detail</strong></p>
+            <%= ff.input :zip%>
+            <%= ff.input :name%>
+            <%= ff.input :address%>
+            <%= ff.input :city%>
+            <%= ff.hidden_field :id%>
+          <% end %>
+        </div>
+      <% end %>
+    <%= f.submit class: "btn btn-primary"%>
+  <% end %>
+</div>

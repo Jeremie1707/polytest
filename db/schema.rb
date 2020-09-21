@@ -29,11 +29,11 @@ ActiveRecord::Schema.define(version: 2020_09_21_094720) do
   create_table "memberships", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "patients_id"
+    t.integer "patient_id"
     t.string "memberable_type"
     t.integer "memberable_id"
     t.index ["memberable_type", "memberable_id"], name: "index_memberships_on_memberable_type_and_memberable_id"
-    t.index ["patients_id"], name: "index_memberships_on_patients_id"
+    t.index ["patient_id"], name: "index_memberships_on_patient_id"
   end
 
   create_table "patients", force: :cascade do |t|

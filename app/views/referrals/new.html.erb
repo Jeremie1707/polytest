@@ -1,0 +1,64 @@
+<div class="container">
+<h1> This is a great form</h1>
+<%= simple_form_for @referral do |f| %>
+  <div class="mb-3">
+    <p style="color:blue"><strong>Referrals detail</strong></p>
+    <%= f.input :organization %>
+    <%= f.input :address %>
+    <%= f.input :zip %>
+    <%= f.input :city %>
+    <%= f.text_area :adress_directions, placeholder: "address direcitons" %>
+    <%= f.input :contact_name %>
+  </div>
+  <div class="mb-3">
+  <%= f.fields_for 'patients_attributes[]', @referral.patients.build do |ff| %>
+    <p style="color:blue"><strong>Patients detail 1</strong></p>
+      <%= ff.input :zip%>
+      <%= ff.input :name%>
+      <%= ff.input :address%>
+      <%= ff.input :city%>
+    <% end %>
+  </div>
+  <div class="mb-3">
+    <%= f.fields_for 'patients_attributes[]', @referral.patients.build do |ff| %>
+    <p style="color:blue"><strong>Patients detail 2</strong></p>
+      <%= ff.input :zip%>
+      <%= ff.input :name%>
+      <%= ff.input :address%>
+      <%= ff.input :city%>
+    <% end %>
+  </div>
+  <%= f.submit class: "btn btn-primary"%>
+<% end %>
+</div>
+
+
+
+  
+      <%# p.mb-0.mt-4.text-primary Kontaktperson ved oppmøte:
+      p.mb-3 Angi kontaktinfo til hjemmehjelp, institusjonsleder, pårørende e.l. hvis det trengs for å utføre test.
+      .row.mb-4
+        .col-6
+          = f.input :contact_name, placeholder: 'Navn'
+        .col-6
+          = f.input :contact_phone_number, placeholder: 'Med landskode f.eks. +47'
+        .col-12
+          = f.input :organization, label: "Organisasjon (vagfritt)", placeholder: 'Valgfritt, f.eks. navn på bofellesskap'
+      
+      p.mb-0.mt-4.text-primary Hvor henviser du fra og hva heter du?
+      p.mb-3 Angi hvor du jobber, avdeling og ditt navn.
+      .row.mb-4
+        .col-12
+          = f.input :referred_by, label: false, placeholder: 'F.eks. Bydel Stovner, Kari Nordmann'
+      p.mb-0.mt-4.text-primary Pasienter på denne adressen
+      p.mb-3
+        'Her legger du til pasientene som skal testes. 
+        'Skal flere pasienter testes på samme adresse, klikker du på “Legg til pasient”.
+      
+      = react_component 'PatientList', \
+        patients: @referral.patients, \
+        parent_model: 'referral'
+        
+      .row.my-1
+        .col-12
+          = f.submit "Send inn", class: 'btn btn-primary mr-2' %>
