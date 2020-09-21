@@ -10,7 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_21_082357) do
+ActiveRecord::Schema.define(version: 2020_09_21_094720) do
+
+  create_table "bookings", force: :cascade do |t|
+    t.datetime "begins_at"
+    t.datetime "ends_at"
+    t.string "address"
+    t.string "city"
+    t.string "zip"
+    t.integer "price"
+    t.string "adress_directions"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "users_id"
+    t.index ["users_id"], name: "index_bookings_on_users_id"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "patients_id"
+    t.string "memberable_type"
+    t.integer "memberable_id"
+    t.index ["memberable_type", "memberable_id"], name: "index_memberships_on_memberable_type_and_memberable_id"
+    t.index ["patients_id"], name: "index_memberships_on_patients_id"
+  end
+
+  create_table "patients", force: :cascade do |t|
+    t.string "name"
+    t.string "zip"
+    t.string "address"
+    t.string "city"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "referrals", force: :cascade do |t|
+    t.string "organization"
+    t.string "pin"
+    t.string "address"
+    t.string "zip"
+    t.string "city"
+    t.string "adress_directions"
+    t.string "contact_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
