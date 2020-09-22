@@ -5,11 +5,11 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(permitted_params)
     @booking.user = User.first
-    if @booking.save!
+    if @booking.save
       redirect_to edit_booking_path(@booking)
     else 
       
-      redirect_to bookings_path
+      redirect_to referrals_path
       flash[:alert] = @booking.errors.to_a.join(', ')
     end
   end
