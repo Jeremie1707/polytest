@@ -43,3 +43,5 @@ user = User.create!(email: 'admin.hjemmelegene@test.com', password: 'test1234', 
 # booking_one = Booking.create(begins_at: Time.now, ends_at: Time.now + 1.hour, address: 'toftes gate 30', city: 'Oslo', zip: "0556", price: 1500, adress_directions: 'second building', patient_ids: [patient_one.id, patient_two.id] )
 
 # referral_one = Referral.create( address: 'toftes gate 30', city: 'Oslo', zip: "0556", adress_directions: 'second building', patient_ids: [patient_one.id, patient_two.id] )
+
+  
