@@ -1,6 +1,6 @@
 <div class="container">
   <h1> This is a great form</h1>
-  <%= simple_form_for @booking do |f| %>
+  <%= simple_form_for @booking, method: :patch do |f| %>
     <div class="mb-3">
       <p style="color:blue"><strong>Referrals detail</strong></p>
       <%= f.input :begins_at %>
@@ -12,6 +12,7 @@
       <%= f.input :price %>
     </div>
     <% @booking.patients.each do |patient| %>
+    <% @patient_count = @booking.patients.count %>
       <div class="mb-3">
         <%= f.fields_for 'patients_attributes[]', patient do |ff| %>
           <p style="color:blue"><strong>Patients detail</strong></p>
@@ -23,6 +24,15 @@
           <% end %>
         </div>
       <% end %>
+      <div class="mb-3">
+        <%= f.fields_for "patients_attributes[#{@patient_count += 1}]", @booking.patients.build do |ff| %>
+          <p style="color:red"><strong>Potential new patient on edit</strong></p>
+            <%= ff.input :name%>
+            <%= ff.input :zip%>
+            <%= ff.input :address%>
+            <%= ff.input :city%>
+        <% end %>
+      </div>
     <%= f.submit class: "btn btn-primary"%>
   <% end %>
 </div>
