@@ -7,14 +7,14 @@
     <%= f.input :address %>
     <%= f.input :zip %>
     <%= f.input :city %>
-    <%= f.text_area :adress_directions, placeholder: "address direcitons" %>
+    <%= f.input :adress_directions, as: :text, placeholder: "second building..." %>
     <%= f.input :contact_name %>
   </div>
   <div class="mb-3">
   <%= f.fields_for 'patients_attributes[]', @referral.patients.build do |ff| %>
     <p style="color:blue"><strong>Patients detail 1</strong></p>
-      <%= ff.input :zip%>
       <%= ff.input :name%>
+      <%= ff.input :zip%>
       <%= ff.input :address%>
       <%= ff.input :city%>
     <% end %>
@@ -22,8 +22,8 @@
   <div class="mb-3">
     <%= f.fields_for 'patients_attributes[]', @referral.patients.build do |ff| %>
     <p style="color:blue"><strong>Patients detail 2</strong></p>
-      <%= ff.input :zip%>
       <%= ff.input :name%>
+      <%= ff.input :zip%>
       <%= ff.input :address%>
       <%= ff.input :city%>
     <% end %>

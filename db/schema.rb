@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 2020_09_21_094720) do
     t.string "adress_directions"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "users_id"
-    t.index ["users_id"], name: "index_bookings_on_users_id"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "memberships", force: :cascade do |t|

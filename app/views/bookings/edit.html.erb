@@ -8,15 +8,15 @@
       <%= f.input :address %>
       <%= f.input :zip %>
       <%= f.input :city %>
-      <%= f.text_area :adress_directions, placeholder: "address direcitons" %>
+      <%= f.input :adress_directions,as: :text, placeholder: "green door, second floor..." %>
       <%= f.input :price %>
     </div>
     <% @booking.patients.each do |patient| %>
       <div class="mb-3">
         <%= f.fields_for 'patients_attributes[]', patient do |ff| %>
           <p style="color:blue"><strong>Patients detail</strong></p>
-            <%= ff.input :zip%>
             <%= ff.input :name%>
+            <%= ff.input :zip%>
             <%= ff.input :address%>
             <%= ff.input :city%>
             <%= ff.hidden_field :id%>
